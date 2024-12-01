@@ -1,4 +1,6 @@
 ﻿using LanchesMac.Context;
+using LanchesMac.Repositories;
+using LanchesMac.Repositories.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace LanchesMac;
@@ -19,6 +21,10 @@ public class Startup
                 Configuration.GetConnectionString("DefaultConnection")
             )
         );
+
+        services.AddTransient<ILancheRepository, LancheRepository>();
+        services.AddTransient<ICategoriaRepository, CategoriaRepository>();
+
         services.AddControllersWithViews();
     }
 
